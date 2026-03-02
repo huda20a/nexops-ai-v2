@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --blue: #2563EB;
+  --blue-dark: #1D4ED8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: #ffffff;
+  color: #0a0a0a;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #2563EB;
+  color: #ffffff;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #2563EB;
+  border-radius: 3px;
+}
+
+/* Noise texture overlay */
+.noise::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px;
+  z-index: 9999;
+}
+
+/* Grid pattern */
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Slide animations */
+.slide-enter-right {
+  animation: slideFromRight 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.slide-enter-left {
+  animation: slideFromLeft 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.slide-exit-left {
+  animation: exitToLeft 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.slide-exit-right {
+  animation: exitToRight 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes slideFromRight {
+  from { opacity: 0; transform: translateX(60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideFromLeft {
+  from { opacity: 0; transform: translateX(-60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes exitToLeft {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(-60px); }
+}
+
+@keyframes exitToRight {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(60px); }
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+.float-anim {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 50%, #1e40af 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card hover */
+.card-hover {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(37, 99, 235, 0.12);
+}
+
+/* Animated underline */
+.animated-underline {
+  position: relative;
+  display: inline-block;
+}
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #2563EB;
+  transition: width 0.3s ease;
+}
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* Glow effect */
+.blue-glow {
+  box-shadow: 0 0 40px rgba(37, 99, 235, 0.2), 0 0 80px rgba(37, 99, 235, 0.05);
+}
