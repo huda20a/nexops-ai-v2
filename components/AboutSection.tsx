@@ -114,8 +114,8 @@ export default function AboutSection() {
                 className="text-white text-lg font-medium leading-relaxed"
                 style={{ fontFamily: 'var(--font-body)' }}
               >
-                "To democratize artificial intelligence by delivering intelligent, 
-                scalable, and responsible AI solutions that drive measurable business outcomes."
+                &quot;To democratize artificial intelligence by delivering intelligent, 
+                scalable, and responsible AI solutions that drive measurable business outcomes.&quot;
               </p>
             </motion.div>
           </div>
